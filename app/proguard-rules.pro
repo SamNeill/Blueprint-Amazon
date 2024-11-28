@@ -39,6 +39,10 @@
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 
+# Suppress D8 warnings for Amazon Appstore Billing Compatibility library
+-dontwarn com.amazon.device.iap.**
+-keep class com.amazon.device.iap.** { *; }
+
 -keepclassmembers class * implements android.os.Parcelable {
     static ** CREATOR;
 }
