@@ -4,6 +4,7 @@ apply plugin: 'kotlin-parcelize'
 apply plugin: 'com.google.devtools.ksp'  // Required for Room database
 
 android {
+    namespace "dev.jahir.blueprint.app"
     signingConfigs {
         release {
             keyAlias 'key0'
@@ -23,7 +24,6 @@ android {
         disable 'MissingTranslation'
     }
 
-    namespace Blueprint.appId
     defaultConfig {
         applicationId Blueprint.appId
         minSdkVersion Versions.minSdk

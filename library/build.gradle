@@ -5,7 +5,7 @@ apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'maven-publish'
 
 android {
-    namespace 'dev.jahir.blueprint'
+    namespace "dev.jahir.blueprint"
     compileSdk Versions.targetSdk
 
     signingConfigs {
