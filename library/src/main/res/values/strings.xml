@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="kustom">Kustom</string>
+    <string name="zooper">Zooper</string>
+
+    <string-array name="icon_shapes_options">
+        <item>@string/icon_shape_system</item>
+        <item>@string/icon_shape_circle</item>
+        <item>@string/icon_shape_squircle</item>
+        <item>@string/icon_shape_rounded_square</item>
+        <item>@string/icon_shape_square</item>
+        <item>@string/icon_shape_teardrop</item>
+    </string-array>
+
+    <string name="about">About</string>
+    
+    <string-array name="credits_photos">
+        <!-- Your photo URLs -->
+    </string-array>
+
+    <string-array name="credits_titles">
+        <!-- Your credit titles -->
+    </string-array>
+
+    <string-array name="credits_descriptions">
+        <!-- Your credit descriptions -->
+    </string-array>
+
+    <string-array name="credits_buttons">
+        <!-- Your button labels -->
+    </string-array>
+
+    <string-array name="credits_links">
+        <!-- Your links -->
+    </string-array>
+
+    <!-- Consent Dialog -->
+    <string name="consent_requirement">Consent requirement</string>
+    <string name="consent_requirement_content">Blueprint collects information about the installed apps and your device details, such as screen dimensions and Android version. This data will be used to design new icons and provide the best possible experience. For additional information, please check the Privacy Policy in the app\'s settings.</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+
+    <string name="launcher_not_installed">This launcher is not installed on your device. Please install it from your preferred app store to use this icon pack.</string>
+
+    <!-- Donation strings -->
+    <string name="donate_success">Thank you for your donation!</string>
+    <string name="donate_failed">Donation failed. Please try again.</string>
+</resources>

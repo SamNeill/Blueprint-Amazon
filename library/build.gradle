@@ -1,0 +1,128 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'maven-publish'
+
+android {
+    namespace 'dev.jahir.blueprint'
+    compileSdk Versions.targetSdk
+
+    signingConfigs {
+        release {
+            storeFile file("../app/NaviNasi.jks")
+            storePassword "Navi Nasi"
+            keyAlias "key0"
+            keyPassword "Navi Nasi"
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Blueprint.version
+        versionName Blueprint.versionName
+        vectorDrawables.useSupportLibrary true
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+
+        buildConfigField "String", "DASHBOARD_NAME", "\"Blueprint\""
+        buildConfigField "String", "DASHBOARD_VERSION", "\"${Blueprint.versionName}\""
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        resources {
+            excludes += [
+                'META-INF/DEPENDENCIES',
+                'META-INF/LICENSE',
+                'META-INF/LICENSE.txt',
+                'META-INF/license.txt',
+                'META-INF/NOTICE',
+                'META-INF/NOTICE.txt',
+                'META-INF/notice.txt',
+                'META-INF/ASL2.0',
+                'META-INF/*.kotlin_module'
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api(Libs.kuper) {
+        transitive = true
+    }
+    api Libs.dependencies
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.SamNeill'
+                artifactId = 'blueprint'
+                version = '1.0.0'
+
+                from components.release
+
+                pom {
+                    name = 'Blueprint'
+                    description = 'Android library for Blueprint Amazon'
+                    url = 'https://github.com/SamNeill/Blueprint-Amazon'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'samneill'
+                            name = 'Sam Neill'
+                            email = 'samneill@example.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

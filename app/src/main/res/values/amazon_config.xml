@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Amazon App Store ASIN - Replace with your app's ASIN -->
+    <string name="amazon_app_store_asin">B0DB3Q3S9J</string>
+</resources> 

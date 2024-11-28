@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Blueprint</string>
+    
+    <!-- Donation Items -->
+    <string name="donation_coffee_title">Buy me a coffee</string>
+    <string name="donation_coffee_description">Support development with a coffee</string>
+    <string name="donation_coffee_price">$2.99</string>
+    
+    <string name="donation_pizza_title">Buy me a pizza</string>
+    <string name="donation_pizza_description">Support development with a pizza</string>
+    <string name="donation_pizza_price">$4.99</string>
+    
+    <string name="donation_burger_title">Buy me a burger</string>
+    <string name="donation_burger_description">Support development with a burger</string>
+    <string name="donation_burger_price">$6.99</string>
+    
+    <string name="donation_meal_title">Buy me a meal</string>
+    <string name="donation_meal_description">Support development with a meal</string>
+    <string name="donation_meal_price">$9.99</string>
+
+    <!-- Messages -->
+    <string name="purchase_success">Thank you for your support!</string>
+    <string name="purchase_failed">Purchase failed. Please try again.</string>
+    <string name="loading_products">Loading products…</string>
+</resources>

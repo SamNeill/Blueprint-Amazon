@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.devtools.ksp'  // Required for Room database
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword 'Navi Nasi'
+            storeFile file('NaviNasi.jks')
+            storePassword 'Navi Nasi'
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+            enableV4Signing true
+        }
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds true
+        disable 'MissingTranslation'
+    }
+
+    namespace Blueprint.appId
+    defaultConfig {
+        applicationId Blueprint.appId
+        minSdkVersion Versions.minSdk
+        compileSdk Versions.targetSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Blueprint.version
+        versionName Blueprint.versionName
+        setProperty("archivesBaseName", applicationId + "-" + versionName)
+        vectorDrawables.useSupportLibrary = true
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main {
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    packagingOptions {
+        resources {
+            pickFirsts += [
+                'META-INF/core_debug.kotlin_module',
+                'META-INF/core_release.kotlin_module',
+                'META-INF/library_debug.kotlin_module',
+                'META-INF/library_release.kotlin_module'
+            ]
+            excludes += [
+                'META-INF/DEPENDENCIES',
+                'META-INF/LICENSE',
+                'META-INF/LICENSE.txt',
+                'META-INF/license.txt',
+                'META-INF/NOTICE',
+                'META-INF/NOTICE.txt',
+                'META-INF/notice.txt',
+                'META-INF/ASL2.0',
+                'META-INF/*.kotlin_module'
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    configurations.all {
+        exclude group: 'com.amazon.device', module: 'appstore-sdk'
+        exclude module: 'appstore-sdk-3.0.5'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':library')
+    
+    // Use only the billing compatibility library
+    implementation files('libs/appstore-billing-compatibility-4.2.0.jar')
+}

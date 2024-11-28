@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="credits_photos">
+        <item>drawable/profile</item>
+    </string-array>
+
+    <string-array name="credits_titles">
+        <item>Sam Summer</item>
+    </string-array>
+
+    <string-array name="credits_descriptions">
+        <item>Aspiring to become a designer!😌😉</item>
+    </string-array>
+
+    <string name="about_footer_description">✨❤️😘 Elevate your home screen with the most exquisite &lt;b>Icons Pack&lt;/b>—where beauty meets functionality!🎨📱</string>
+
+    <string-array name="credits_buttons">
+        <item>GitHub</item>
+        <item>Instagram</item>
+        <item>Twitter</item>
+        <item>Telegram</item>
+        <item>Email</item>
+        <item>Facebook</item>
+        <item>Website</item>
+        <item>Reddit</item>
+        <item>Pinterest</item>
+        <item>Gumroad</item>
+        <item>BuyMeACoffee</item>
+        <item>Bsky</item>
+        <item>Threads</item>
+        <item>Mastodon</item>
+        <item>Discord</item>
+    </string-array>
+
+    <string-array name="credits_links">
+        <item>https://github.com/YourProfile</item>
+        <item>https://instagram.com/YourProfile</item>
+        <item>https://twitter.com/YourProfile</item>
+        <item>https://t.me/YourProfile</item>
+        <item>mailto:your.email@example.com</item>
+        <item>https://facebook.com/YourProfile</item>
+        <item>https://your-website.com</item>
+        <item>https://reddit.com/u/YourProfile</item>
+        <item>https://pinterest.com/YourProfile</item>
+        <item>https://gumroad.com/YourProfile</item>
+        <item>https://buymeacoffee.com/YourProfile</item>
+        <item>https://bsky.app/profile/YourProfile</item>
+        <item>https://threads.net/@YourProfile</item>
+        <item>https://mastodon.social/@YourProfile</item>
+        <item>https://discord.gg/YourServer</item>
+    </string-array>
+</resources>
